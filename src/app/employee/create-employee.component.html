@@ -1,0 +1,59 @@
+<form class="form-horizontal" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Create Employee</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group" [ngClass]="{'has-error':employeeForm.get('fullName').errors && (employeeForm.get('fullName').touched || employeeForm.get('fullName').dirty)}">
+        <label class="control-label col-sm-2" for="fullName">FullName:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" formControlName="fullName" id="fullName" placeholder="Enter fullName"
+            name="fullName">
+            <span *ngIf="employeeForm.get('fullName').touched">{{fullNameLength}}</span>
+            <span class="help-block" *ngIf="employeeForm.get('fullName').errors && (employeeForm.get('fullName').touched || employeeForm.get('fullName').dirty)">
+            <span *ngIf="employeeForm.get('fullName').errors.required">Full name is required</span>
+            <span *ngIf="employeeForm.get('fullName').errors.minlength || employeeForm.get('fullName').errors.maxlength">
+                Full name must be greater than 2 charachter and less than 10 charachter
+             </span>
+          </span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Email:</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" formControlName="email" id="email" placeholder="Enter Email" name="email">
+        </div>
+      </div>
+      <div formGroupName="skills">
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="pwd">Skills:</label>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" formControlName="skillName" id="skillName" placeholder="Enter skill Name"
+              name="skillName"></div>
+          <div class="col-sm-4">
+            <input type="text" class="form-control" formControlName="experienceInYears" id="experienceInYears"
+              placeholder="Enter experience In Years" name="experienceInYears"></div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="pwd">Proficiency:</label>
+          <label class="radio-inline">
+            <input type="radio" name="proficiency" formControlName="proficiency" value="beginner"> Beginner</label>
+          <label class="radio-inline">
+            <input type="radio" name="proficiency" formControlName="proficiency" value="intermediat"> Intermediat</label>
+          <label class="radio-inline">
+            <input type="radio" name="proficiency" formControlName="proficiency" value="advanced"> Advanced</label>
+        </div>
+      </div>
+    </div>
+    <div class="panel-footer">
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="btn-toolbar">
+          <button type="submit" class="btn btn-primary">Submit </button> 
+          <button type="button" (click)="onLoadDataClick()" class="btn btn-primary">Load Data</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
