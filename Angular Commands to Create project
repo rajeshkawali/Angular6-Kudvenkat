@@ -1,0 +1,29 @@
+--To create new Angular project without test files
+ng new NewAngularApp --skip-tests
+
+--to install bootstrap and jquery
+npm install bootstrap@3 jquery --save
+
+--Create new component in employee folder without test file and new folder.
+ng g c employee/create-employee --spec=false --flat=true
+
+--Create new component in employee folder without test file and new folder.
+ng g c employee/list-employees --spec=false --flat=true
+
+--Create new component department with new folder.
+ng g c department
+
+--Create routing module without(--flat=true) creating new folder
+ng g m app-routing --flat=true --module=app
+
+-- To run the application.
+ng serve --open
+
+-- to install json-server
+npm install -g json-server
+
+-- To start the json server (db.json is a dummy json file which contains json data)
+json-server --watch db.json
+
+-- To provide new port for this file
+json-server --watch db.json --port 3004
